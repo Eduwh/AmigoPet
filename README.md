@@ -67,4 +67,14 @@ Acesse `http://localhost:8080`.
 
 ## Atualizar o mockup
 
-Se alterar a apresentação na pasta local `prototype/`, copie `prototype/apresentacao.html` para `public/index.html`. Se alterar o documento de design, atualize também `public/AmigoPet-Gestao.figcraft`. Faça commit e push dos arquivos de `public/`.
+O desktop preserva as telas do mockup. Até 760 px de largura, a apresentação usa uma interface mobile em HTML, com texto legível, listas em coluna e navegação fixa. Todas as rotas do desktop têm uma apresentação mobile, incluindo agendamento, cadastro e banho e tosa. O celular abre na visão geral; links diretos, como `#agenda` ou `#pet`, também funcionam.
+
+Os arquivos `scripts/mobile.css` e `scripts/mobile.js` contêm essa apresentação mobile. Para incorporar alterações no HTML publicado, execute:
+
+```sh
+python3 scripts/prepare_site.py
+```
+
+O script usa a apresentação de `prototype/` quando ela está disponível, ou o próprio `public/index.html` em um checkout do Git. Ele preserva o desktop, incorpora CSS e JavaScript mobile e copia o documento Figcraft quando disponível. Não requer pacotes adicionais e não precisa ser executado no Cloudflare: o resultado pronto fica em `public/`.
+
+Faça commit e push de `public/`, `scripts/` e deste README após uma alteração. A configuração de publicação no Pages continua igual.
